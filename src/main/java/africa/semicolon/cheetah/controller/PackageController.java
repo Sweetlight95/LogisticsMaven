@@ -15,7 +15,7 @@ public class PackageController {
     public AddPackageResponse addPackage(@RequestBody AddPackageRequest addPackageRequest) {
         return packageService.addPackage(addPackageRequest);
     }
-    @GetMapping("/api/package/{id")
+    @GetMapping("/api/package/{id}")
     public Package findPackageById(@PathVariable("id") Integer id) {
         return packageService.findMyPackageWithMy(id);
     }
