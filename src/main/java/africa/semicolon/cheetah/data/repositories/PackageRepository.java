@@ -7,11 +7,11 @@ import java.util.List;
 public interface PackageRepository {
     Package save(Package aPackage);
 
-    List<Package> findAll();
+    List<Package> findById();
 
     void delete(Package aPackage);
 
-    void deleteByTrackingNumber(Integer trackingNumber);
+    void delete(Integer id);
 
-    Package findPackageTrackingNumber(Integer trackingNumber);
+    Package findById(Integer id);
 }

@@ -2,31 +2,47 @@ package africa.semicolon.cheetah.data.repositories;
 
 import africa.semicolon.cheetah.data.models.Package;
 
-import java.util.List;
+import java.util.*;
 
 public class PackageRepositoryImpl implements PackageRepository{
+    Map<Integer, Package> database = new HashMap<>();
     @Override
     public Package save(Package aPackage) {
-        return null;
+        Integer id = null;
+        if(aPackage.getId() == null){
+         id = database.size() + 1;
+        aPackage.setId(id);
+        }
+        id = aPackage.getId();
+        database.put(id, aPackage);
+        return database.get(id);
     }
 
     @Override
-    public List<Package> findAll() {
-        return null;
+    public List<Package> findById() {
+        List<Package> all = new ArrayList<>();
+        Set<Integer> keys = database.keySet();
+        for(Integer key: keys) {
+            all.add(database.get(key));
+        }
+//        keys.forEach(key -> all.add(database.get(key)));
+        return all;
     }
 
     @Override
     public void delete(Package aPackage) {
+        database.remove(aPackage.getId());
 
     }
 
     @Override
-    public void deleteByTrackingNumber(Integer trackingNumber) {
+    public void delete(Integer id) {
+        database.remove(id);
 
     }
 
     @Override
-    public Package findPackageTrackingNumber(Integer trackingNumber) {
-        return null;
+    public Package findById(Integer id) {
+        return database.get(id);
     }
 }

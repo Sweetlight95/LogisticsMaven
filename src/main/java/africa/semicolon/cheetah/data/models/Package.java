@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
 public class Package {
-    private Integer trackingNumber;
+    private Integer id;
     private String name;
     private String senderName;
     private String receiverName;
