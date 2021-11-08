@@ -7,9 +7,8 @@ public class ModelMapper {
     public static Package map(AddPackageRequest addPackageRequest){
         Package aPackage = new Package();
         aPackage.setName(addPackageRequest.getPackageDescription());
-        aPackage.setSenderPhone(addPackageRequest.getSenderPhone());
         aPackage.setDeliveryAddress(addPackageRequest.getDeliveryAddress());
-        aPackage.setSenderName(addPackageRequest.getSenderName());
+        aPackage.setSenderEmail(addPackageRequest.getSenderEmail());
         aPackage.setReceiverPhone(addPackageRequest.getReceiverPhone());
         aPackage.setReceiverName(addPackageRequest.getReceiverName());
         aPackage.setNetWeight(addPackageRequest.getPackageWeight());
