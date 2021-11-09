@@ -25,8 +25,7 @@ TrackingInformationRepository trackingInformationRepository;
     void save() {
         TrackingInformation trackingInformation = new TrackingInformation();
         trackingInformation.setPackageId(81137983);
-        TrackingData trackingData = new TrackingData();
-        trackingData.setEvent("Package ready for delivery");
+        TrackingData trackingData = new TrackingData("Package ready for delivery");
         trackingInformation.getTrackingData().add(trackingData);
         TrackingInformation saveInfo = trackingInformationRepository.save(trackingInformation);
 
@@ -37,8 +36,8 @@ TrackingInformationRepository trackingInformationRepository;
     private TrackingInformation saveTestHelper(){
         TrackingInformation trackingInformation = new TrackingInformation();
         trackingInformation.setPackageId(81137983);
-        TrackingData trackingData = new TrackingData();
-        trackingData.setEvent("Package ready for delivery");
+        TrackingData trackingData = new TrackingData("Package ready for delivery");
+//        trackingData.setEvent("Package ready for delivery");
         trackingInformation.getTrackingData().add(trackingData);
         TrackingInformation saveInfo = trackingInformationRepository.save(trackingInformation);
         return saveInfo;
