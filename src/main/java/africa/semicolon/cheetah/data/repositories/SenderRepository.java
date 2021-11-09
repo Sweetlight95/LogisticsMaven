@@ -16,4 +16,5 @@ public interface SenderRepository {
 
     List<Sender> findAll();
 
+    void deleteAll();
 }

@@ -38,4 +38,8 @@ public class SenderRepositoryImpl implements SenderRepository{
 //        keysInDB.forEach(key -> all.add(database.get(key)));
         return all;
     }
+    @Override
+    public void deleteAll(){
+        database.clear();
+    }
 }
