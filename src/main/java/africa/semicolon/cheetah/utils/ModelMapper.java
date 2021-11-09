@@ -1,9 +1,11 @@
 package africa.semicolon.cheetah.utils;
 import africa.semicolon.cheetah.data.models.Package;
 import africa.semicolon.cheetah.data.models.Sender;
+import africa.semicolon.cheetah.data.models.TrackingData;
 import africa.semicolon.cheetah.dtos.requests.AddPackageRequest;
 import africa.semicolon.cheetah.dtos.requests.RegisterSenderRequest;
 import africa.semicolon.cheetah.dtos.responses.AddPackageResponse;
+import africa.semicolon.cheetah.dtos.responses.AddTrackingInfoResponse;
 import africa.semicolon.cheetah.dtos.responses.RegisterSenderResponse;
 
 public class ModelMapper {
@@ -41,6 +43,15 @@ public class ModelMapper {
         response.setSenderEmail(sender.getEmailAddress());
 
         return response;
+    }
+//AddTrackingInfoRequest addTrackingInfo
+    public static AddTrackingInfoResponse map(TrackingData trackingData, Integer packageId) {
+        AddTrackingInfoResponse addTrackingInfoResponse = new AddTrackingInfoResponse();
+        addTrackingInfoResponse.setDateTime(trackingData.getDateTimeOfEvent());
+        addTrackingInfoResponse.setEvent(trackingData.getEvent());
+//        (addtrackingInfo.getPackageId());
+        addTrackingInfoResponse.setPackageId(packageId);
+        return addTrackingInfoResponse;
     }
 }
 

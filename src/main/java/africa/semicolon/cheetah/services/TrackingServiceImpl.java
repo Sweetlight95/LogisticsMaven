@@ -7,6 +7,7 @@ import africa.semicolon.cheetah.data.repositories.TrackingInformationRepositoryI
 import africa.semicolon.cheetah.dtos.requests.AddTrackingInfoRequest;
 import africa.semicolon.cheetah.dtos.responses.AddTrackingInfoResponse;
 import africa.semicolon.cheetah.exceptions.InvalidPackageIdException;
+import africa.semicolon.cheetah.utils.ModelMapper;
 
 import java.util.Optional;
 
@@ -22,7 +23,10 @@ public class TrackingServiceImpl implements TrackingService{
         if(aPackage == null) throw new InvalidPackageIdException("Package Id is invalid");
         TrackingData trackingData = new TrackingData(addTrackingInfoRequest.getEvent());
 //        find previous tracking info;
-        Optional<TrackingInformation> optionalInfo = trackingRepo.findByPackageId(addTrackingInfoRequest.getPackageId());
+        Optional<TrackingInformation> optionalInfo = trackingRepo.
+                findByPackageId(addTrackingInfoRequest.getPackageId());
+
+        TrackingInformation response = null;
         if(optionalInfo.isPresent()) {optionalInfo.get().getTrackingData().add(trackingData);
         trackingRepo.save(optionalInfo.get());
         }
@@ -31,12 +35,14 @@ public class TrackingServiceImpl implements TrackingService{
             trackingInformation.setPackageId(addTrackingInfoRequest.getPackageId());
             trackingInformation.getTrackingData().add(trackingData);
             trackingRepo.save(trackingInformation);
+
         }
 
 //        if exist add new event and save;
 //        else create new tracking info, add new event and save
 //        convert saved tracking info to response dto
 //        return response dto
-        return null;
+//        (addTrackingInfoRequest);
+        return ModelMapper.map(trackingData, addTrackingInfoRequest.getPackageId());
     }
 }
